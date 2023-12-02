@@ -1,5 +1,7 @@
 # Advent of Code 2023
-## Day 2, Part 1
+## Day 2: *Cube Conundrum*
+
+### Part 1
 
 As you walk, the Elf shows you a small bag and some cubes which are either red, green, or blue. Each time you play this game, he will hide a secret number of cubes of each color in the bag, and your goal is to figure out information about the number of cubes.
 
@@ -25,7 +27,7 @@ In the example above, games 1, 2, and 5 would have been possible if the bag had 
 
 Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?
 
-## Day 2, Part 2
+### Part 2
 
 As you continue your walk, the Elf poses a second question: in each game you played, what is the fewest number of cubes of each color that could have been in the bag to make the game possible?
 

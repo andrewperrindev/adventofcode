@@ -19,3 +19,4 @@ You try to ask why they can't just use a weather machine ("not powerful enough")
 * Day 1 (*Trebuchet?!*): The calibration document was helpfully "improved" by an eager young elf, but now the correct values are difficult to read. Help uncover the correct values.
 * Day 2 (*Cube Conundrum*): An Elf at the first location plays a game while walking with you. The game consists of various colored cubes in a bag. Cubes are randomly pulled out by the handful. Derive certain information about the games & the initial state given a set of final game outcomes.
 * Day 3 (*Gear Ratios*): Use the gondola lift schematic to troubleshoot why it's moving so slowly. Discover part numbers & gear ratios by locating numbers & symbols in the schematic that are adjacent to each other horizontally, vertically & diagonally.
+* Day 4 (*Scratchcards*): Try to figure out how much you've won in a pile of scratchcards. Part 1 & part 2 each use a different method to calcuate your winnings.

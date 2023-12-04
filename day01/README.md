@@ -3,12 +3,7 @@
 
 ### Part 1
 
-As they're making the final adjustments, they discover that their calibration document (your puzzle input) has been amended by a very young Elf who was apparently just excited to show off her art skills. Consequently, the Elves are having trouble reading the values on the document.
-
-The newly-improved calibration document consists of lines of text; each line originally contained 
-a specific calibration value that the Elves now need to recover. On each line, the calibration 
-value can be found by combining the first digit and the last digit (in that order) to form a single 
-two-digit number.
+For a given list of input strings, parse out the first number and last number, then concatenate them together to form a two-digit number.
 
 For example:
 ```
@@ -18,17 +13,15 @@ a1b2c3d4e5f
 treb7uchet
 ```
 
-In this example, the calibration values of these four lines are `12, 38, 15, and 77`. 
+In this example, the four numbers parsed out would be `12, 38, 15, and 77`. 
 Adding these together produces 142.
 
-Consider your entire calibration document. What is the sum of all of the calibration values?
+The provided code should return the sum of numbers for a given input.
 
 ### Part 2
 
-Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: 
-one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
-
-Equipped with this new information, you now need to find the real first and last digit on each line. 
+In addition to numerical digits, you must now consider numbers spelled out in words.
+Only the numbers one through nine will be provided in the input.
 For example:
 ```
 two1nine
@@ -39,7 +32,7 @@ xtwone3four
 zoneight234
 7pqrstsixteen
 ```
-In this example, the calibration values are `29, 83, 13, 24, 42, 14, and 76`. 
+In this example, the numbers parsed out would be `29, 83, 13, 24, 42, 14, and 76`. 
 Adding these together produces 281.
 
-What is the sum of all of the calibration values?
+The provided code should return the sum of numbers for a given input.

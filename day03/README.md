@@ -3,19 +3,9 @@
 
 ### Part 1
 
-You and the Elf eventually reach a gondola lift station; he says the gondola lift will take you up to the water source, but this is as far as he can bring you. You go inside.
+You are given a text input (called a "schematic") consisting of numbers and symbols. Your job is to find every case where a number is adjacent to symbol horizontally, vertically or diagonally. Dots (.) are not symbols and are only used as neutral seperators.
 
-It doesn't take long to find the gondolas, but there seems to be a problem: they're not moving.
-
-"Aaah!"
-
-You turn around to see a slightly-greasy Elf with a wrench and a look of surprise. "Sorry, I wasn't expecting anyone! The gondola lift isn't working right now; it'll still be a while before I can fix it." You offer to help.
-
-The engineer explains that an engine part seems to be missing from the engine, but nobody can figure out which one. If you can add up all the part numbers in the engine schematic, it should be easy to work out which part is missing.
-
-The engine schematic (your puzzle input) consists of a visual representation of the engine. There are lots of numbers and symbols you don't really understand, but apparently any number adjacent to a symbol, even diagonally, is a "part number" and should be included in your sum. (Periods (.) do not count as a symbol.)
-
-Here is an example engine schematic:
+Here is an example input:
 
 ```
 467..114..
@@ -29,23 +19,15 @@ Here is an example engine schematic:
 ...$.*....
 .664.598..
 ```
-In this schematic, two numbers are not part numbers because they are not adjacent to a symbol: 114 (top right) and 58 (middle right). Every other number is adjacent to a symbol and so is a part number; their sum is 4361.
+For this example, every number is adjacent to a symbol EXCEPT 114 and 58.
 
-Of course, the actual engine schematic is much larger. What is the sum of all of the part numbers in the engine schematic?
+Your program should return the sum of all numbers that are adjacent to a symbol.
 
 ### Part 2
 
-The engineer finds the missing part and installs it in the engine! As the engine springs to life, you jump in the closest gondola, finally ready to ascend to the water source.
+Now we must consider the asterisk (*) character as a special symbol. We need to find all the cases where an asterisk is adjacent to two (and exactly two) numbers.
 
-You don't seem to be going very fast, though. Maybe something is still wrong? Fortunately, the gondola has a phone labeled "help", so you pick it up and the engineer answers.
-
-Before you can explain the situation, she suggests that you look out the window. There stands the engineer, holding a phone in one hand and waving with the other. You're going so slowly that you haven't even left the station. You exit the gondola.
-
-The missing part wasn't the only issue - one of the gears in the engine is wrong. A gear is any * symbol that is adjacent to exactly two part numbers. Its gear ratio is the result of multiplying those two numbers together.
-
-This time, you need to find the gear ratio of every gear and add them all up so that the engineer can figure out which gear needs to be replaced.
-
-Consider the same engine schematic again:
+Given the eearlier sample input again:
 
 ```
 467..114..
@@ -59,6 +41,11 @@ Consider the same engine schematic again:
 ...$.*....
 .664.598..
 ```
-In this schematic, there are two gears. The first is in the top left; it has part numbers 467 and 35, so its gear ratio is 16345. The second gear is in the lower right; its gear ratio is 451490. (The * adjacent to 617 is not a gear because it is only adjacent to one part number.) Adding up all of the gear ratios produces 467835.
+There are two asterisks meeting tthis requirement: the top left (with numbers 467 & 35 adjacent), and the lower right (with 755 & 598 adjaceent).
 
-What is the sum of all of the gear ratios in your engine schematic?
+Write a program that:
+1. Finds all asterisks with two adjacent numbers.
+2. For each asterisk, multiply their numbers together. e.g. for the first example above, 467 & 35 would generate 16345.
+3. Finally, sum all the multiplied asterisk values together.
+
+The final program output should be the result of step 3.

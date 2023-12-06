@@ -44,10 +44,11 @@ humidity-to-location map:
 56 93 4
 ```
 (These headings are specific to the original challenge text, and are preserved here since they're referenced in the solution code.)
+
 Here, the inputs include the numbers 79 14 55 13.
 The first mapping group is labeled "seed-to-soil map" and includes two mappings:
-50 98 2
-52 50 48
+* 50 98 2
+* 52 50 48
 
 The first row shows that the destination values start at 50. The source values start at 98. And both have a range of 2.
 This means that:
@@ -56,8 +57,8 @@ This means that:
 * There are only two numbers for both because the range value is 2.
 
 Written another way, the mappings for the first row look like this:
-98->50
-99->51
+* 98->50
+* 99->51
 
 Any numbers not covered by the mappings should pass through unchanged. For example, a source value of 10 has no mapping in the first group, so the destination value would be 10 as well.
 
@@ -68,7 +69,9 @@ Given this, run the input (seed) values through each mapping group to get final 
 In part one, each input "seed" value was a standalone value. Now consider them in pairs, where the first value is a start value, and the second value is a range.
 
 Looking at the example above:
+
 `seeds: 79 14 55 13`
+
 There are two pairs of values, each representing a range of seed values.
 
 One range starts at 79 and covers 14 values (79-92). The second range starts at 55 and covers 13 values (55-67). Each value in these ranges is a disttinct seed, which means there are now 27 seed values to check.

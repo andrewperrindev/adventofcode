@@ -15,3 +15,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 3 (*Gear Ratios*): Given a text document of numbers and symbols, locate numbers that are horizontally, vertically or diagonally adjacent to various symbols.
 * Day 4 (*Scratchcards*): Try to figure out how much you've won in a pile of lottery cards. Part 1 & part 2 each use a different method to calcuate your winnings.
 * Day 5 (*If You Give A Seed A Fertilizer*): Use various mapping tables to translate source values to destination values, with the ultimate goal of finding the smallest destination value.
+* Day 6 (*Wait For It*): See how far you can get a boat to travel in the allotted time. Can you beat the record time?

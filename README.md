@@ -18,3 +18,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 6 (*Wait For It*): See how far you can get a boat to travel in the allotted time. Can you beat the record time?
 * Day 7 (*Camel Cards*): Analyze simple poker hands and determine total winnings.
 * Day 8 (*Haunted Wasteland*): Given a set of directions and a map of locations, calculate the number of steps to the exit.
+* Day 9 (*Mirage Maintenance*): Extrapolate numbers based on previous numbers in a sequence.

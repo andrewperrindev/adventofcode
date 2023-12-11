@@ -19,3 +19,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 7 (*Camel Cards*): Analyze simple poker hands and determine total winnings.
 * Day 8 (*Haunted Wasteland*): Given a set of directions and a map of locations, calculate the number of steps to the exit.
 * Day 9 (*Mirage Maintenance*): Extrapolate numbers based on previous numbers in a sequence.
+* Day 10 (*Pipe Maze*): Find the closed loop path in a maze. Then, find how many spaces are inside the loop.

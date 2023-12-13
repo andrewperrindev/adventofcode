@@ -21,3 +21,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 9 (*Mirage Maintenance*): Extrapolate numbers based on previous numbers in a sequence.
 * Day 10 (*Pipe Maze*): Find the closed loop path in a maze. Then, find how many spaces are inside the loop.
 * Day 11 (*Cosmic Expansion*): Find the shortest path between pairs of galaxies in an expanding universe.
+* Day 12 (*Hot Springs*): Locate the damaged springs given only partial information.

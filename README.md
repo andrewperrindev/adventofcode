@@ -22,3 +22,5 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 10 (*Pipe Maze*): Find the closed loop path in a maze. Then, find how many spaces are inside the loop.
 * Day 11 (*Cosmic Expansion*): Find the shortest path between pairs of galaxies in an expanding universe.
 * Day 12 (*Hot Springs*): Locate the damaged springs given only partial information.
+* ~~Day 13~~
+* Day 14 (*Parabolic Reflector Dish*) Repeatedly tilt a platform of "rocks" in different directions and calculate the load shift.

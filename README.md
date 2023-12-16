@@ -24,3 +24,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 12 (*Hot Springs*): Locate the damaged springs given only partial information.
 * ~~Day 13~~
 * Day 14 (*Parabolic Reflector Dish*) Repeatedly tilt a platform of "rocks" in different directions and calculate the load shift.
+* Day 15 (*Lens Library*) Keep track of values in various hash buckets in order to calculate a final value.

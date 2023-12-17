@@ -1,5 +1,6 @@
-require 'set'
-
+# ADVENT OF CODE: Day 16, Part 2
+# See README for context.
+#
 module Direction
   UP = 'UP'
   DOWN = 'DOWN'
@@ -148,10 +149,16 @@ def init_energized(grid)
   end
 end
 
+def save_path(paths, total, energized)
+  paths[total] = energized
+  return total
+end
+
 lines = File.readlines('mirrors.example.txt')
 mirrors = lines.map { |line|
   line.strip.split('')
 }
+paths = {}
 
 # Initialize a hashmap of starting coordinates around the edge of the grid.
 # Each direction indicates the direction we start moving.
@@ -172,12 +179,20 @@ results = starting_points.keys.map do |direction|
     # Start traversing a path at these coordinates & in this direction.
     traverse_mirrors(mirrors, *coords, direction, energized)
     # Result is the number of spaces we visited.
-    energized.reduce(0) { |total, line|
+    visited = energized.reduce(0) { |total, line|
       total + line.reduce(0) { |count, space| count + (space == '.' ? 0 : 1) }
     }
+    # Save the final path and return the number of spaces visited
+    save_path(paths, visited, energized)
   end
 end
 
 # Result is the highest number of tiles visited from all
 # our starting positions.
-puts results.map { |line| line.max }.max
+max_path = results.map { |line| line.max }.max
+paths[max_path].map { |line|
+  puts line.map { |space|
+    space == '.' ? '.' : '#'
+  }.join
+}
+puts max_path

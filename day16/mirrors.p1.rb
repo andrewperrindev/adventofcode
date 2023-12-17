@@ -1,3 +1,6 @@
+# ADVENT OF CODE: Day 16, Part 1
+# See README for context.
+#
 module Direction
   UP = 'UP'
   DOWN = 'DOWN'

@@ -4,6 +4,8 @@ Each folder in this repo is a separate coding challenge that was part of the [Ad
 
 There is a README in each folder to explain the context of that day's challenge, but here is the general introduction to the event, and a summary of each day's challenge.
 
+Some days I didn't have time to complete the second part, or didn't have time to complete the day at all, so they are omitted.
+
 ## Introduction
 
 Each day in the Advent of Code provided a new backstory to that day's coding challenge. For copyright reasons, I'm not including the backstory for each day, but instead a summary of what the resulting code should do. Please visit [Advent of Code 2023](https://adventofcode.com) for the flavor text & why each day has the name it does.
@@ -22,7 +24,12 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 10 (*Pipe Maze*): Find the closed loop path in a maze. Then, find how many spaces are inside the loop.
 * Day 11 (*Cosmic Expansion*): Find the shortest path between pairs of galaxies in an expanding universe.
 * Day 12 (*Hot Springs*): Locate the damaged springs given only partial information.
-* ~~Day 13~~
-* Day 14 (*Parabolic Reflector Dish*) Repeatedly tilt a platform of "rocks" in different directions and calculate the load shift.
-* Day 15 (*Lens Library*) Keep track of values in various hash buckets in order to calculate a final value.
-* Day 16 (*The Floor Will Be Lava*) Track a beam of light as it bounces around a grid of mirrors.
+* Day 13 (*Point of Incidence*): Detect reflections on multiple grids.
+* Day 14 (*Parabolic Reflector Dish*): Repeatedly tilt a platform of "rocks" in different directions and calculate the load shift.
+* Day 15 (*Lens Library*): Keep track of values in various hash buckets in order to calculate a final value.
+* Day 16 (*The Floor Will Be Lava*): Track a beam of light as it bounces around a grid of mirrors.
+* ~~Day 17~~
+* Day 18 (*Lavaduct Lagoon*): Calculate the total area of a lava holding trench.
+* Day 19 (*Aplenty*): Use various workflows to categorize parts.
+* ~~Day 20~~
+* Day 21 (*Step Counter*): Analyze a map and calculate how far somone could walk in a certain number of steps.

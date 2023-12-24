@@ -1,7 +1,7 @@
 # ADVENT OF CODE: Day 21, Part 1
 # See README for context.
 #
-map = File.readlines('steps.example.txt')
+map = File.readlines('steps.input.txt')
 map = map.map { |line|
   line.strip.split('')
 }

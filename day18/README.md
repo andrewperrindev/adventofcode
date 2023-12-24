@@ -23,7 +23,7 @@ L 2 (#015232)
 U 2 (#7a21e3)
 ```
 
-The first instructionn describes the direction of movement. The second instruction is the length. The third instruction can be ignored. Given thesee instructions, the following border would be created:
+The first instruction describes the direction of movement. The second instruction is the length. The third instruction can be ignored. Given these instructions, the following border would be created:
 ```
 #######
 #.....#
@@ -37,7 +37,7 @@ The first instructionn describes the direction of movement. The second instructi
 .######
 ```
 
-After filling in the space between the border, the final trench & its area can be visualized:
+After filling in the spaces between the border, the final trench & its area can be visualized:
 ```
 #######
 #######
@@ -51,12 +51,12 @@ After filling in the space between the border, the final trench & its area can b
 .######
 ```
 
-Write a program to calculate the total area given a list of instructions.
+Given a list of instructions, write a program to calculate the total area.
 
 ### Part 2
 
-Turns out the third parameter is the actual length & direction. The first five characters represent the length in hex. The sixth character repreesents the direction: 0 = R, 1 = D, 2 = L, and 3 = U. For example, given the example in part 1:
-
+Turns out the third parameter is the actual length & direction. The first five characters represent the length in hex. The sixth character represents the direction: 0 = R, 1 = D, 2 = L, and 3 = U. For example, given the example in part 1:
+```
 #70c710 = R 461937
 #0dc571 = D 56407
 #5713f0 = R 356671
@@ -71,5 +71,6 @@ Turns out the third parameter is the actual length & direction. The first five c
 #a77fa3 = U 686074
 #015232 = L 5411
 #7a21e3 = U 500254
+```
 
 Calculate the area of the trench given these new instructions.

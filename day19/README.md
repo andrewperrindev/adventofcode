@@ -25,7 +25,7 @@ hdj{m>838:A,pv}
 {x=2127,m=1623,a=2188,s=1013}
 ```
 
-The first set of the input (before the line break) describes the workflows. Each line is a separate workflow, and starts with its name, e.g. `px`. Between the brackets describes various conditions that the part must satisfy in order to move to the next workflow. For example, in the `px` workflow, a part must have an `a` less than `2006` in order to proceed to the `qkq` workflow. If no conditions match, then the last item in the workflow is the default workflow to execute next, or the final endstate (either `A` or `R`).
+The first set of the input (before the empty line) describes the workflows. Each line is a separate workflow, and starts with its name, e.g. `px`. Between the brackets describes various conditions that the part must satisfy in order to move to the next workflow. For example, in the `px` workflow, a part must have an `a` less than `2006` in order to proceed to the `qkq` workflow. If no conditions match, then the last item in the workflow is the default workflow to execute next, or the final endstate (either `A` or `R`).
 
 The second set of input describes the parts. Each line is a separate part. Each part has various ratings for `x`, `m`, `a` or `s`. Starting at the `in` workflow, run each part through the workflows until either an `A` or `R` state is achieved.
 

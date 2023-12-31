@@ -33,3 +33,7 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 * Day 19 (*Aplenty*): Use various workflows to categorize parts.
 * ~~Day 20~~
 * Day 21 (*Step Counter*): Analyze a map and calculate how far somone could walk in a certain number of steps.
+* ~~Day 22~~
+* Day 23 (*A Long Walk*): Find the longest path on a grid from the start location to the end location.
+* ~~Day 24~~
+* ~~Day 25~~

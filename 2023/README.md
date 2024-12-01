@@ -1,6 +1,6 @@
 # Advent of Code 2023
 
-Each folder in this repo is a separate coding challenge that was part of the [Advent of Code 2023](https://adventofcode.com) event. Like a traditional advent calendar, each day was a new coding challenge. In addition, each coding challenge had two parts.
+Each folder is a separate coding challenge that was part of the [Advent of Code 2023](https://adventofcode.com/2023) event. Like a traditional advent calendar, each day in December was a new coding challenge. In addition, each coding challenge had two parts.
 
 There is a README in each folder to explain the context of that day's challenge, but here is the general introduction to the event, and a summary of each day's challenge.
 
@@ -8,7 +8,7 @@ Some days I didn't have time to complete the second part, or didn't have time to
 
 ## Introduction
 
-Each day in the Advent of Code provided a new backstory to that day's coding challenge. For copyright reasons, I'm not including the backstory for each day, but instead a summary of what the resulting code should do. Please visit [Advent of Code 2023](https://adventofcode.com) for the flavor text & why each day has the name it does.
+Each day in the Advent of Code provided a new backstory to that day's coding challenge. For copyright reasons, I'm not including the backstory for each day, but instead a summary of what the resulting code should do. Please visit [Advent of Code 2023](https://adventofcode.com/2023) for the flavor text & why each day has the name it does.
 
 ## Summary
 

@@ -62,9 +62,20 @@ const writeFileAsJson = async (fileName, data) => {
     );
 };
 
+const readAsLines = (data) => {
+    return data.split('\n').map((line) => line.trim()).filter((line) => line.length > 0);
+};
+
+const parseLineAsNumbers = (line) => {
+    const numbers = line.split(/\s+/);
+    return numbers.map((number) => parseInt(number.trim(), 10));
+};
+
 module.exports = {
     openFile,
     openFileAtPath,
     openJsonFile,
     writeFileAsJson,
+    readAsLines,
+    parseLineAsNumbers,
 };

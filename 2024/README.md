@@ -11,3 +11,5 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 ## Summary
 
 * Day 1 (*Historian Hysteria*): First part sorts two columns of numbers, then sums the differences between the values in each column. Second part instead finds the number of times each number in the first column occurs in the second column, then multiplies the first column number by the number of occurrences; the sum of these values is the result.
+* Day 2 (*Red-Nosed Reports*): First part checks a list of numbers to see if they pass a certain list of requirements. Second part does the same, except it tries to discard one of the erroenous numbers in the list to see if the remaining numbers pass the requirements.
+* Day 3 (*Mull It Over*): First part parses out "multiply" commands from a text string and returns the sum of the multiplied numbers. Second part adds two additional commands that determine whether the "multiply" commands should be part of the sum or not.

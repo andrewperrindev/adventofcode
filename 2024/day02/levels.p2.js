@@ -1,7 +1,7 @@
 const { openFile, readAsLines, parseLineAsNumbers } = require('../utils/file-handler');
 
 const readInput = async () => {
-    const data = await openFile('inputs/levels.example.txt');
+    const data = await openFile('inputs/levels.example.txt', __dirname);
 
     return readAsLines(data);
 };
@@ -79,3 +79,7 @@ const getSafeLineCount = async () => {
 getSafeLineCount().then((result) => {
     console.log(result);
 });
+
+module.exports = {
+    getSafeLineCount
+};

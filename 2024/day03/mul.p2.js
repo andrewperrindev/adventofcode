@@ -1,7 +1,7 @@
 const { openFile, readAsLines } = require('../utils/file-handler');
 
 const readInput = async () => {
-    const data = await openFile('inputs/mul.example.txt');
+    const data = await openFile('inputs/mul.p2example.txt', __dirname);
 
     return readAsLines(data);
 };
@@ -49,3 +49,7 @@ const getSum = async() => {
 getSum().then((result) => {
     console.log(result);
 });
+
+module.exports = {
+    getSum
+};

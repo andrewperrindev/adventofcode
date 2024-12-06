@@ -18,7 +18,7 @@ const sortedIndex = (array, value) => {
 }
 
 const readInput = async () => {
-    const data = await openFile('inputs/locations.example.txt');
+    const data = await openFile('inputs/locations.example.txt', __dirname);
 
     const firstLocations = [];
     const secondLocations = [];
@@ -54,3 +54,7 @@ const getResult = async () => {
 getResult().then((result) => {
     console.log(result);
 });
+
+module.exports = {
+    getResult
+};

@@ -8,7 +8,7 @@ const WORD_LENGTH = WORD.length;
 const getLetter = (matrix, x, y) => matrix[y][x];
 
 const readInput = async () => {
-    const data = await openFile('inputs/crossword.example.txt');
+    const data = await openFile('inputs/crossword.example.txt', __dirname);
 
     return readAsLines(data).map((line) => parseLineAsMatrix(line));
 };
@@ -167,3 +167,8 @@ const findAllWords = (matrix) => {
 readInput().then((matrix) => {
     console.log(findAllWords(matrix));
 });
+
+module.exports = {
+    readInput,
+    findAllWords
+};

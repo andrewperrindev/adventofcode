@@ -1,7 +1,7 @@
 const { openFile, readAsLines, parseLineAsNumbers } = require('../utils/file-handler');
 
 const readInput = async () => {
-    const data = await openFile('inputs/printer.example.txt');
+    const data = await openFile('inputs/printer.example.txt', __dirname);
 
     return readAsLines(data);
 };
@@ -107,3 +107,7 @@ const getTotal = async() => {
 getTotal().then(result => {
     console.log(result);
 });
+
+module.exports = {
+    getTotal
+};

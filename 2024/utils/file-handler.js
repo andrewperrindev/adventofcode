@@ -11,9 +11,13 @@ const openFileAtPath = async (filePath) => {
     return fs.readFile(filePath, {encoding: 'utf-8'});
 };
 
-const openFile = async (fileName) => {
+const openFile = async (fileName, basePath = null) => {
     let data;
     let pathIndex = 0;
+
+    if (basePath) {
+        pathOptions.push(basePath);
+    }
 
     while (pathIndex < pathOptions.length && !data) {
         const filePath = path.join(pathOptions[pathIndex], fileName);

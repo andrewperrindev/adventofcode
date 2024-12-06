@@ -4,6 +4,8 @@ const WORD = 'MAS';
 const REVERSE_WORD = 'SAM';
 const WORD_LENGTH = WORD.length;
 
+// Convenience function because I find it easier to think
+// in x,y instead of y,x.
 const getLetter = (matrix, x, y) => matrix[y][x];
 
 const readInput = async () => {
@@ -58,6 +60,8 @@ const findAllWords = (matrix) => {
             const letter = getLetter(matrix, x, y);
 
             if (letter === 'M' || letter === 'S') {
+                // By moving consistently down and to the right, we can count all
+                // occurrences of `MAS` or `SAM` crossing each other without double counting.
                 if (checkDiagonalDownRight(matrix, x, y) && checkDiagonalDownLeft(matrix, x + 2, y)) {
                     tally += 1;
                 }

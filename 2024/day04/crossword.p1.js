@@ -3,6 +3,8 @@ const { openFile, readAsLines, parseLineAsMatrix } = require('../utils/file-hand
 const WORD = 'XMAS';
 const WORD_LENGTH = WORD.length;
 
+// Convenience function because I find it easier to think
+// in x,y instead of y,x.
 const getLetter = (matrix, x, y) => matrix[y][x];
 
 const readInput = async () => {
@@ -11,6 +13,9 @@ const readInput = async () => {
     return readAsLines(data).map((line) => parseLineAsMatrix(line));
 };
 
+// Might be nice to encapsulate some of this matrix search logic into its
+// own package or class.
+// Maybe if this style puzzle comes up again...
 const checkForwards = (matrix, x, y) => {
     const line = matrix[y];
 
@@ -138,6 +143,9 @@ const findAllWords = (matrix) => {
 
         for (let x = 0; x < line.length; x++) {
             if (getLetter(matrix, x, y) === 'X') {
+                // How many directions fully spell out XMAS?
+                // Each function returns true or false to indicate if XMAS exists.
+                // Then use `reduce` to count how may are `true`.
                 const results = [
                     checkForwards(matrix, x, y),
                     checkBackwards(matrix, x, y),

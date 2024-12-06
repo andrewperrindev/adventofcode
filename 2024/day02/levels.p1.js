@@ -1,7 +1,7 @@
 const { openFile, readAsLines, parseLineAsNumbers } = require('../utils/file-handler');
 
 const readInput = async () => {
-    const data = await openFile('inputs/levels.input.txt');
+    const data = await openFile('inputs/levels.example.txt');
 
     return readAsLines(data);
 };

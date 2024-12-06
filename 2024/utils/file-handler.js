@@ -62,16 +62,24 @@ const writeFileAsJson = async (fileName, data) => {
     );
 };
 
+const truncateTrailingLines = (lines) => {
+    while (lines.at(lines.length - 1).trim() === '') {
+        lines.pop();
+    }
+
+    return lines;
+};
+
 const readAsLines = (data) => {
-    return data.split('\n').map((line) => line.trim()).filter((line) => line.length > 0);
+    return truncateTrailingLines(data.split('\n')).map((line) => line.trim());
 };
 
 const parseLineAsMatrix = (line) => {
     return [...line];
 };
 
-const parseLineAsNumbers = (line) => {
-    const numbers = line.split(/\s+/);
+const parseLineAsNumbers = (line, separator = /\s+/) => {
+    const numbers = line.split(separator);
     return numbers.map((number) => parseInt(number.trim(), 10));
 };
 

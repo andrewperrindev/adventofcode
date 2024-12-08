@@ -1,6 +1,16 @@
 class Matrix {
     constructor(matrix) {
-        this.matrix = matrix.map((row) => [...row]);
+        this.charList = new Set();
+        this.matrix = matrix.map((row) => {
+            return row.map((loc) => {
+                this.charList.add(loc);
+                return loc;
+            });
+        });
+    }
+
+    getCharactersInMatrix() {
+        return this.charList;
     }
 
     isValidCoordinate(coords) {
@@ -22,6 +32,21 @@ class Matrix {
             const [x, y] = coords;
             this.matrix[y][x] = value;
         }
+    }
+
+    distanceBetween(coordsFrom, coordsTo) {
+        const [fromX, fromY] = coordsFrom;
+        const [toX, toY] = coordsTo;
+
+        return [toX - fromX, toY - fromY];
+    }
+
+    coordinateAdd(coords, distance) {
+        const [x, y] = coords;
+        const [distanceX, distanceY] = distance;
+
+        const newCoords = [x + distanceX, y + distanceY];
+        return this.isValidCoordinate(newCoords) ? newCoords : undefined;
     }
 
     find(value) {

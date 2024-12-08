@@ -33,8 +33,8 @@ class Matrix {
     }
 
     findAnyOf(values) {
-        for(let y = 0; y < this.matrix.length; y++) {
-            for(let x = 0; x < this.matrix[y].length; x++) {
+        for (let y = 0; y < this.matrix.length; y++) {
+            for (let x = 0; x < this.matrix[y].length; x++) {
                 if (values.includes(this.matrix[y][x])) {
                     return [x, y];
                 }
@@ -47,8 +47,8 @@ class Matrix {
     findAllOf(values) {
         const locations = [];
 
-        for(let y = 0; y < this.matrix.length; y++) {
-            for(let x = 0; x < this.matrix[y].length; x++) {
+        for (let y = 0; y < this.matrix.length; y++) {
+            for (let x = 0; x < this.matrix[y].length; x++) {
                 if (values.includes(this.matrix[y][x])) {
                     locations.push([x, y]);
                 }

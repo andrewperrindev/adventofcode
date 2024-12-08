@@ -11,7 +11,7 @@ const parseOrderingRules = (input) => {
     const mustComeBefore = {};
     let line = input.shift();
 
-    while(line !== '') {
+    while (line !== '') {
         const [first, second] = parseLineAsNumbers(line, '|');
 
         // Keep track of which pages MUST come before or after these numbers.
@@ -28,12 +28,12 @@ const parseOrderingRules = (input) => {
     }
 
     return [mustComeAfter, mustComeBefore];
-}
+};
 
 const parseUpdates = (input) => {
     const pageUpdates = [];
 
-    for(let i = 0; i < input.length; i++) {
+    for (let i = 0; i < input.length; i++) {
         const pages = parseLineAsNumbers(input[i], ',');
         if (pages.length > 0) {
             pageUpdates.push(pages);
@@ -41,7 +41,7 @@ const parseUpdates = (input) => {
     }
 
     return pageUpdates;
-}
+};
 
 const isPageValid = (page, prevPages, mustComeAfter) => {
     // Invalid if any of the previous pages must come after
@@ -54,7 +54,7 @@ const isPageValid = (page, prevPages, mustComeAfter) => {
     }
 
     return true;
-}
+};
 
 const validateUpdates = (pageUpdates, mustComeAfter) => {
     return pageUpdates.map((update) => {
@@ -63,13 +63,13 @@ const validateUpdates = (pageUpdates, mustComeAfter) => {
             // then include in the final tally.
             if (!isPageValid(update[i], update.slice(0, i), mustComeAfter)) {
                 const fixed = fixInvalidUpdate(update, mustComeAfter);
-                return fixed.at(Math.floor(fixed.length / 2));;
+                return fixed.at(Math.floor(fixed.length / 2));
             }
         }
 
         return 0;
-    })
-}
+    });
+};
 
 const fixInvalidUpdate = (pageUpdate, mustComeAfter) => {
     const fixed = [];
@@ -93,21 +93,21 @@ const fixInvalidUpdate = (pageUpdate, mustComeAfter) => {
     }
 
     return fixed;
-}
+};
 
-const getTotal = async() => {
+const getTotal = async () => {
     const data = await readInput();
     const [mustComeAfter] = parseOrderingRules(data);
     const updates = parseUpdates(data);
 
     const results = validateUpdates(updates, mustComeAfter);
     return results.reduce((sum, result) => sum + result, 0);
-}
+};
 
-getTotal().then(result => {
+getTotal().then((result) => {
     console.log(result);
 });
 
 module.exports = {
-    getTotal
+    getTotal,
 };

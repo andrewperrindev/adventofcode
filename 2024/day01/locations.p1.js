@@ -3,7 +3,7 @@ const { openFile } = require('../utils/file-handler');
 const processLine = (line) => {
     const numbers = line.split('   ');
     return numbers.map((number) => parseInt(number.trim(), 10));
-}
+};
 
 const sortedIndex = (array, value) => {
     var low = 0,
@@ -15,7 +15,7 @@ const sortedIndex = (array, value) => {
         else high = mid;
     }
     return low;
-}
+};
 
 const readInput = async () => {
     const data = await openFile('inputs/locations.example.txt', __dirname);
@@ -33,28 +33,28 @@ const readInput = async () => {
     });
 
     return [firstLocations, secondLocations];
-}
+};
 
 const computeDiffs = ([firstLocations, secondLocations]) => {
     const diffs = [];
 
-    for(let index = 0; index < firstLocations.length; index++) {
+    for (let index = 0; index < firstLocations.length; index++) {
         diffs.push(Math.abs(firstLocations[index] - secondLocations[index]));
     }
 
     return diffs;
-}
+};
 
 const getResult = async () => {
     const locationLists = await readInput();
     const diffs = computeDiffs(locationLists);
     return diffs.reduce((currentSum, diff) => currentSum + diff, 0);
-}
+};
 
 getResult().then((result) => {
     console.log(result);
 });
 
 module.exports = {
-    getResult
+    getResult,
 };

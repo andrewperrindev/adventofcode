@@ -16,7 +16,7 @@ const isPathBlocked = (map, direction) => {
     const [x, y] = map.getLocation();
     let newLocation;
 
-    switch(direction) {
+    switch (direction) {
         case UP:
             newLocation = [x, y - 1];
             break;
@@ -34,10 +34,10 @@ const isPathBlocked = (map, direction) => {
     }
 
     return map.at(newLocation) === '#';
-}
+};
 
 const turnRight = (direction) => {
-    switch(direction) {
+    switch (direction) {
         case UP:
             return RIGHT;
         case DOWN:
@@ -49,7 +49,7 @@ const turnRight = (direction) => {
         default:
             return direction;
     }
-}
+};
 
 const determinePath = (map) => {
     const location = map.findAnyOf([UP, DOWN, LEFT, RIGHT]);
@@ -70,7 +70,9 @@ const determinePath = (map) => {
             // Since the grid is static, if we revisit the exact same spot heading in the exact
             // same direction, then we're stuck in a loop.
             const prevVisited = visited.find((node) => {
-                return node.direction === direction && node.location.toString() === map.getLocation().toString();
+                return (
+                    node.direction === direction && node.location.toString() === map.getLocation().toString()
+                );
             });
             if (prevVisited) {
                 map.setLocationValue('*');
@@ -78,11 +80,11 @@ const determinePath = (map) => {
             } else {
                 visited.push({
                     direction: direction,
-                    location: map.getLocation()
+                    location: map.getLocation(),
                 });
             }
 
-            switch(direction) {
+            switch (direction) {
                 case UP:
                     success = map.moveLocationUp();
                     break;
@@ -104,7 +106,7 @@ const determinePath = (map) => {
     }
 
     return false;
-}
+};
 
 // Given a list of coordinates, add an obstacle at each coordinate and
 // check to see if the guard gets stuck in a loop.
@@ -121,7 +123,7 @@ const findCycles = (map, pathCoords) => {
     });
 
     return cycleLocations.filter((location) => !!location);
-}
+};
 
 const getResult = async () => {
     const originalMap = await readInput();
@@ -132,12 +134,14 @@ const getResult = async () => {
     // cycles. Any other location & the guard would never encounter it anyway.
     const cycleLocations = findCycles(originalMap, pathLocations);
     return cycleLocations.length;
+};
+
+if (!module.parent) {
+    getResult().then((result) => {
+        console.log(result);
+    });
 }
 
-getResult().then(result => {
-    console.log(result);
-});
-
 module.exports = {
-    getResult
+    getResult,
 };

@@ -36,20 +36,20 @@ const evaluateAllCommands = (commandStrings) => {
     });
 
     return results;
-}
+};
 
-const getSum = async() => {
+const getSum = async () => {
     const lines = await readInput();
 
     const commandStrings = lines.reduce((commands, line) => [...commands, ...findCommands(line)], []);
     const results = evaluateAllCommands(commandStrings);
     return results.reduce((sum, result) => sum + result, 0);
-}
+};
 
 getSum().then((result) => {
     console.log(result);
 });
 
 module.exports = {
-    getSum
+    getSum,
 };

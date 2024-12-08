@@ -21,7 +21,7 @@ const checkDiagonalDownRight = (matrix, x, y) => {
     if (endY <= matrix.length && x + WORD_LENGTH - 1 <= matrix[y].length) {
         let currentX = x;
 
-        for (let letter = y; letter < endY; letter++)  {
+        for (let letter = y; letter < endY; letter++) {
             word.push(getLetter(matrix, currentX, letter));
             currentX += 1;
         }
@@ -30,7 +30,7 @@ const checkDiagonalDownRight = (matrix, x, y) => {
     }
 
     return false;
-}
+};
 
 const checkDiagonalDownLeft = (matrix, x, y) => {
     const word = [];
@@ -39,7 +39,7 @@ const checkDiagonalDownLeft = (matrix, x, y) => {
     if (endY <= matrix.length && x - WORD_LENGTH + 1 >= 0) {
         let currentX = x;
 
-        for (let letter = y; letter < endY; letter++)  {
+        for (let letter = y; letter < endY; letter++) {
             word.push(getLetter(matrix, currentX, letter));
             currentX -= 1;
         }
@@ -48,7 +48,7 @@ const checkDiagonalDownLeft = (matrix, x, y) => {
     }
 
     return false;
-}
+};
 
 const findAllWords = (matrix) => {
     let tally = 0;
@@ -70,7 +70,7 @@ const findAllWords = (matrix) => {
     }
 
     return tally;
-}
+};
 
 readInput().then((matrix) => {
     console.log(findAllWords(matrix));
@@ -78,5 +78,5 @@ readInput().then((matrix) => {
 
 module.exports = {
     readInput,
-    findAllWords
+    findAllWords,
 };

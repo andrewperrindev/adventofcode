@@ -7,23 +7,22 @@ const readInput = async () => {
 };
 
 const findBadIndex = (numbers) => {
-    prev_number = null;
-    increasing = null;
+    let prev_number = null;
+    let increasing = null;
 
     for (let i = 0; i < numbers.length; i++) {
         let diff = 0;
 
         if (prev_number !== null) {
             diff = numbers[i] - prev_number;
-            if (![1,2,3].includes(Math.abs(diff))) {
+            if (![1, 2, 3].includes(Math.abs(diff))) {
                 return i;
             }
         }
 
         if (i === 1) {
             increasing = diff > 0;
-        }
-        else if (i > 0) {
+        } else if (i > 0) {
             if ((increasing && numbers[i] < prev_number) || (!increasing && numbers[i] > prev_number)) {
                 return i;
             }
@@ -33,7 +32,7 @@ const findBadIndex = (numbers) => {
     }
 
     return -1;
-}
+};
 
 const applyProblemDampener = (numbers, badIndex) => {
     // Why these indices in particular?
@@ -52,17 +51,17 @@ const applyProblemDampener = (numbers, badIndex) => {
         if (result === -1) {
             break;
         }
-    };
+    }
 
     return result;
-}
+};
 
 const getSafeLineCount = async () => {
     const lines = await readInput();
 
     return lines.reduce((tally, line) => {
         const numbers = parseLineAsNumbers(line);
-        let badIndex = findBadIndex(numbers)
+        let badIndex = findBadIndex(numbers);
 
         if (badIndex > 0) {
             badIndex = applyProblemDampener(numbers, badIndex);
@@ -74,12 +73,12 @@ const getSafeLineCount = async () => {
 
         return tally;
     }, 0);
-}
+};
 
 getSafeLineCount().then((result) => {
     console.log(result);
 });
 
 module.exports = {
-    getSafeLineCount
+    getSafeLineCount,
 };

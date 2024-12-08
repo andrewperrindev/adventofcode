@@ -16,7 +16,7 @@ const isPathBlocked = (map, direction) => {
     const [x, y] = map.getLocation();
     let newLocation;
 
-    switch(direction) {
+    switch (direction) {
         case UP:
             newLocation = [x, y - 1];
             break;
@@ -34,10 +34,10 @@ const isPathBlocked = (map, direction) => {
     }
 
     return map.at(newLocation) === '#';
-}
+};
 
 const turnRight = (direction) => {
-    switch(direction) {
+    switch (direction) {
         case UP:
             return RIGHT;
         case DOWN:
@@ -49,7 +49,7 @@ const turnRight = (direction) => {
         default:
             return direction;
     }
-}
+};
 
 const determinePath = (map) => {
     const location = map.findAnyOf([UP, DOWN, LEFT, RIGHT]);
@@ -65,7 +65,7 @@ const determinePath = (map) => {
                 direction = turnRight(direction);
             }
 
-            switch(direction) {
+            switch (direction) {
                 case UP:
                     success = map.moveLocationUp();
                     break;
@@ -87,18 +87,21 @@ const determinePath = (map) => {
     }
 
     return map;
-}
+};
 
 const getResult = async () => {
     const matrix = new Matrix(await readInput());
     determinePath(matrix);
     return matrix.findAll('X').length;
+};
+
+if (!module.parent) {
+    getResult().then((result) => {
+        console.log(result);
+    });
 }
 
-getResult().then(result => {
-    console.log(result);
-});
-
 module.exports = {
-    getResult
+    readInput,
+    getResult,
 };

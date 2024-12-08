@@ -2,13 +2,10 @@ const fs = require('fs/promises');
 const path = require('path');
 const process = require('process');
 
-const pathOptions = [
-    __dirname,
-    process.cwd(),
-];
+const pathOptions = [__dirname, process.cwd()];
 
 const openFileAtPath = async (filePath) => {
-    return fs.readFile(filePath, {encoding: 'utf-8'});
+    return fs.readFile(filePath, { encoding: 'utf-8' });
 };
 
 const openFile = async (fileName, basePath = null) => {
@@ -25,13 +22,9 @@ const openFile = async (fileName, basePath = null) => {
         try {
             data = await openFileAtPath(filePath);
 
-            console.log(
-                `file-handler.js | openFile | Successfully opened ${filePath}`,
-            );
+            console.log(`file-handler.js | openFile | Successfully opened ${filePath}`);
         } catch (ex) {
-            console.warn(
-                `file-handler.js | openFile | File not found at ${filePath}`,
-            );
+            console.warn(`file-handler.js | openFile | File not found at ${filePath}: ${ex}`);
         }
 
         pathIndex++;
@@ -51,19 +44,14 @@ const openJsonFile = async (fileName) => {
     try {
         result = JSON.parse(data);
     } catch (ex) {
-        throw new Error(`Unable to parse JSON in file ${fileName}`);
+        throw new Error(`Unable to parse JSON in file ${fileName}: ${ex}`);
     }
 
     return result;
 };
 
 const writeFileAsJson = async (fileName, data) => {
-    const basePath = app.isPackaged ? pathOptions[0] : pathOptions[1];
-
-    return fs.writeFile(
-        path.join(basePath, fileName),
-        JSON.stringify(data, null, 4),
-    );
+    return fs.writeFile(path.join(pathOptions[0], fileName), JSON.stringify(data, null, 4));
 };
 
 const truncateTrailingLines = (lines) => {
@@ -83,7 +71,7 @@ const parseLineAsMatrix = (line) => {
 };
 
 const parseLineAsNumbers = (line, separator = /\s+/) => {
-    const numbers = line.split(separator);
+    const numbers = line.trim().split(separator);
     return numbers.map((number) => parseInt(number.trim(), 10));
 };
 

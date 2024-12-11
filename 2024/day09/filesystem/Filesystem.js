@@ -72,6 +72,13 @@ module.exports = class Filesystem {
 
             free.blocks -= file.blocks;
             this.contents.splice(toIndex, 0, fileSpace);
+            // Even though the net total blocks remains the same (we removed the file
+            // at `fromIndex` and inserted it at `toIndex`), we now have an extra
+            // element preceding `fromIndex` (there used to be just the free space --
+            // now there's the remaining free space PLUS the relocated file).
+            // To compensate, increment `fromIndex` so we add the displaced free
+            // space in the correct location.
+            fromIndex++;
         }
 
         // Replace moved file blocks with free space

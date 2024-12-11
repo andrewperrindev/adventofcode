@@ -49,6 +49,26 @@ class Matrix {
         return this.isValidCoordinate(newCoords) ? newCoords : undefined;
     }
 
+    upFrom([x, y]) {
+        const newCoords = [x, y - 1];
+        return this.isValidCoordinate(newCoords) ? newCoords : undefined;
+    }
+
+    downFrom([x, y]) {
+        const newCoords = [x, y + 1];
+        return this.isValidCoordinate(newCoords) ? newCoords : undefined;
+    }
+
+    leftFrom([x, y]) {
+        const newCoords = [x - 1, y];
+        return this.isValidCoordinate(newCoords) ? newCoords : undefined;
+    }
+
+    rightFrom([x, y]) {
+        const newCoords = [x + 1, y];
+        return this.isValidCoordinate(newCoords) ? newCoords : undefined;
+    }
+
     find(value) {
         return this.findAnyOf([value]);
     }
@@ -99,10 +119,10 @@ class Matrix {
 
     moveLocationUp() {
         if (this.location) {
-            const [x, y] = this.location;
+            const newLocation = this.upFrom(this.location);
 
-            if (this.isValidCoordinate([x, y - 1])) {
-                this.location = [x, y - 1];
+            if (newLocation) {
+                this.location = newLocation;
                 return true;
             }
         }
@@ -112,10 +132,10 @@ class Matrix {
 
     moveLocationDown() {
         if (this.location) {
-            const [x, y] = this.location;
+            const newLocation = this.downFrom(this.location);
 
-            if (this.isValidCoordinate([x, y + 1])) {
-                this.location = [x, y + 1];
+            if (newLocation) {
+                this.location = newLocation;
                 return true;
             }
         }
@@ -125,10 +145,10 @@ class Matrix {
 
     moveLocationLeft() {
         if (this.location) {
-            const [x, y] = this.location;
+            const newLocation = this.leftFrom(this.location);
 
-            if (this.isValidCoordinate([x - 1, y])) {
-                this.location = [x - 1, y];
+            if (newLocation) {
+                this.location = newLocation;
                 return true;
             }
         }
@@ -138,10 +158,10 @@ class Matrix {
 
     moveLocationRight() {
         if (this.location) {
-            const [x, y] = this.location;
+            const newLocation = this.rightFrom(this.location);
 
-            if (this.isValidCoordinate([x + 1, y])) {
-                this.location = [x + 1, y];
+            if (newLocation) {
+                this.location = newLocation;
                 return true;
             }
         }

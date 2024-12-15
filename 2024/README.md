@@ -21,3 +21,6 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 9 (_Disk Fragmenter_): First part moves parts of files from the end of a "disk" to free space near the start of the disk. Second part only moves full files if there is enough contiguous free space available closer to the start of the disk. <sup>NB - extra test</sup>
 - Day 10 (_Hoof It_): First part finds how many distinct end points a trailhead can reach. The second part finds how many trails exist for a trailhead, even if they end up at the same end point.
 - Day 11 (_Plutonian Pebbles_): Every time you blink, a set of stones mutate and/or generate new stones. Part 1: how many total stones are there after 25 blinks? Part 2: how many total stones are there after 75 blinks?
+- Day 12 (_Garden Groups_): First part calculates the cost of fence for regions on a grid by finding their area and perimeter. Second part does the same, but uses number of sides instead of perimeter.
+- Day 13 (_Claw Contraption_): Calculate the minimum number of button presses needed to win a prize from a machine.
+- Day 14 (_Restroom Redoubt_): Part 1 calculates the position of guard robots after 100 seconds. Part 2 looks for the number of seconds until the robots (curiously) form the shape of a Christmas tree.

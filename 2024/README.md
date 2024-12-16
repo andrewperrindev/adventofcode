@@ -24,3 +24,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 12 (_Garden Groups_): First part calculates the cost of fence for regions on a grid by finding their area and perimeter. Second part does the same, but uses number of sides instead of perimeter.
 - Day 13 (_Claw Contraption_): Calculate the minimum number of button presses needed to win a prize from a machine.
 - Day 14 (_Restroom Redoubt_): Part 1 calculates the position of guard robots after 100 seconds. Part 2 looks for the number of seconds until the robots (curiously) form the shape of a Christmas tree.
+- Day 15 (_Warehouse Woes_): Both parts predict where a robot will move boxes to on a grid. Second part complicates things by making the boxes double width. <sup>NB - cleanup</sup>

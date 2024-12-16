@@ -4,6 +4,10 @@ const Region = require('./region');
 
 class Matrix {
     constructor(matrix) {
+        this.freeSpaceChars = ['.'];
+        this.fixedSpaceChars = ['#'];
+        this.movableSpaceChars = [];
+
         this.charList = new Set();
         this.regions = [];
         this.matrix = matrix.map((row) => {
@@ -12,6 +16,22 @@ class Matrix {
                 return loc;
             });
         });
+    }
+
+    static get UP() {
+        return '^';
+    }
+
+    static get DOWN() {
+        return 'v';
+    }
+
+    static get LEFT() {
+        return '<';
+    }
+
+    static get RIGHT() {
+        return '>';
     }
 
     get width() {
@@ -28,6 +48,18 @@ class Matrix {
 
     isValidCoordinate(coords) {
         return isValidCoordinate(coords, [this.width, this.height]);
+    }
+
+    isFreeSpace(coords) {
+        return this.freeSpaceChars.includes(this.at(coords));
+    }
+
+    isFixedSpace(coords) {
+        return this.fixedSpaceChars.includes(this.at(coords));
+    }
+
+    isMovableSpace(coords) {
+        return this.movableSpaceChars.length === 0 || this.movableSpaceChars.includes(this.at(coords));
     }
 
     plot() {
@@ -49,6 +81,16 @@ class Matrix {
         if (this.isValidCoordinate(coords)) {
             const [x, y] = coords;
             this.matrix[y][x] = value;
+        }
+    }
+
+    swap(coordsA, coordsB) {
+        const valueA = this.at(coordsA);
+        const valueB = this.at(coordsB);
+
+        if (![valueA, valueB].includes(undefined)) {
+            this.set(coordsA, valueB);
+            this.set(coordsB, valueA);
         }
     }
 
@@ -82,6 +124,21 @@ class Matrix {
     rightFrom(coords) {
         const newCoords = rightFrom(coords);
         return this.isValidCoordinate(newCoords) ? newCoords : undefined;
+    }
+
+    directionFrom(coords, direction) {
+        switch (direction) {
+            case Matrix.UP:
+                return this.upFrom(coords);
+            case Matrix.DOWN:
+                return this.downFrom(coords);
+            case Matrix.LEFT:
+                return this.leftFrom(coords);
+            case Matrix.RIGHT:
+                return this.rightFrom(coords);
+            default:
+                return undefined;
+        }
     }
 
     find(value) {
@@ -182,6 +239,91 @@ class Matrix {
         }
 
         return false;
+    }
+
+    moveLocation(direction) {
+        switch (direction) {
+            case Matrix.UP:
+                return this.moveLocationUp();
+            case Matrix.DOWN:
+                return this.moveLocationDown();
+            case Matrix.LEFT:
+                return this.moveLocationLeft();
+            case Matrix.RIGHT:
+                return this.moveLocationRight();
+            default:
+                return undefined;
+        }
+    }
+
+    pushLocation(direction) {
+        const canPush = this.checkPush(this.getLocation(), direction);
+
+        if (canPush) {
+            this.doPush(this.getLocation(), direction);
+            this.moveLocation(direction);
+        }
+    }
+
+    pushLocationCols(direction, colMinRowsToMove, colMaxRowsToMove) {
+        const coordsToPush = Object.keys(colMinRowsToMove).map((col) => {
+            let newY = colMinRowsToMove[col];
+            const xNum = parseInt(col, 10);
+
+            while (this.at([xNum, newY]) === '.') {
+                [, newY] = this.directionFrom([xNum, newY], direction);
+            }
+            return [xNum, newY];
+        });
+        const canPushCols = coordsToPush.map((coord) =>
+            this.checkPush(coord, direction, colMaxRowsToMove[coord[0]]),
+        );
+
+        if (canPushCols.every((canPush) => canPush)) {
+            coordsToPush.forEach((coord) => {
+                this.doPush(coord, direction, colMaxRowsToMove[coord[0]]);
+            });
+            this.moveLocation(direction);
+        }
+    }
+
+    atTarget(currentY, maxY, direction) {
+        if (direction === Matrix.UP) {
+            return currentY <= maxY;
+        } else {
+            return currentY >= maxY;
+        }
+    }
+
+    checkPush(coords, direction, maxY = null) {
+        if (coords) {
+            maxY ??= coords[1];
+            if (this.isFreeSpace(coords) && this.atTarget(coords[1], maxY, direction)) {
+                return true;
+            } else if (!this.isFixedSpace(coords) && this.isMovableSpace(coords)) {
+                return this.checkPush(this.directionFrom(coords, direction), direction, maxY);
+            }
+        }
+
+        return false;
+    }
+
+    doPush(coords, direction, maxY = null) {
+        if (coords && !this.isFixedSpace(coords)) {
+            maxY ??= coords[1];
+            if (this.isFreeSpace(coords) && this.atTarget(coords[1], maxY, direction)) {
+                return coords;
+            } else if (this.isMovableSpace(coords)) {
+                const pushCoords = this.doPush(this.directionFrom(coords, direction), direction, maxY);
+
+                if (pushCoords) {
+                    this.swap(coords, pushCoords);
+                    return this.isFreeSpace(coords) ? coords : undefined;
+                }
+            }
+        }
+
+        return undefined;
     }
 
     atLocation() {

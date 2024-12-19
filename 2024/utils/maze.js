@@ -10,7 +10,7 @@ module.exports = class Maze extends Matrix {
     }
 
     isValidSpace(coords) {
-        return !this.fixedSpaceChars.includes(this.at(coords));
+        return this.isValidCoordinate(coords) && !this.fixedSpaceChars.includes(this.at(coords));
     }
 
     getOptimalPath(direction, keyFn, scoreFn) {

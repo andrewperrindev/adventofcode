@@ -27,3 +27,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 15 (_Warehouse Woes_): Both parts predict where a robot will move boxes to on a grid. Second part complicates things by making the boxes double width. <sup>NB - cleanup</sup>
 - Day 16 (_Reindeer Maze_): First part asks to find the shortest distance from the start of a maze to the end. Second part asks for the number of coordinates on the grid that are part of at least one of the possible best paths.
 - Day 17 (_Chronospatial Computer_): Part 1 executes a set of program instructions and returns the output. Part 2 is the reverse: given an output, what input would yield that result. <sup>NB - needs part 2 solution</sup>
+- Day 18 (_RAM Run_): First part finds the minimum number of steps needed to escape a grid after a certain number of obstacles appear. Second part figures out the first obstacle that makes escape impossible.

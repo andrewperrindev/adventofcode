@@ -43,14 +43,26 @@ const parseInput = (lines) => {
     return [new Matrix(matrixLines), commandStr.split('')];
 };
 
-const determineCols = (matrix, coords, direction) => {
-    let [x, y] = coords;
-    const colsToMinRow = {};
-    const colsToMaxRow = {};
-    colsToMinRow[x] = y;
-    colsToMaxRow[x] = y;
+/**
+ * Figure out which columns to move now that boxes can span multiple columns.
+ * We also keep track of which row a column should start being pushed from,
+ * as well as which row is the last to be pushed (`colsToFirstRow` and `colsToLastRow`).
+ * This is to accomodate two special cases in this scenario, both a side
+ * effect of boxes being able to stack and overlap in ways that form gaps:
+ *   - Some boxes hang over the edges, and don't appear until well above where
+ *     the robot is positioned. Solution: we need to skip initial empty spaces when pushing.
+ *   - Some overlaps cause spaces in between boxes, which can cause a false reading for
+ *     whether an empty space is available to push for a given column. Solution: specify
+ *     the last row that needs to be pushed, regardless of empty space in between.
+ */
+const determineCols = (matrix, direction) => {
+    let [x, y] = matrix.getLocation();
+    const colsToFirstRow = {};
+    const colsToLastRow = {};
+    colsToFirstRow[x] = y;
+    colsToLastRow[x] = y;
 
-    [x, y] = matrix.directionFrom(coords, direction);
+    [x, y] = matrix.directionFrom([x, y], direction);
     let colsToSearch = [x];
 
     while (y >= 0 && y < matrix.height) {
@@ -59,24 +71,25 @@ const determineCols = (matrix, coords, direction) => {
         if (colsToSearch.length === 0) {
             break;
         }
+
         if (matrix.at([colsToSearch.at(0), y]) === ']') {
-            colsToMinRow[colsToSearch.at(0) - 1] ??= y;
-            colsToMaxRow[colsToSearch.at(0) - 1] = y;
+            colsToFirstRow[colsToSearch.at(0) - 1] ??= y;
             colsToSearch.unshift(colsToSearch.at(0) - 1);
         }
         if (matrix.at([colsToSearch.at(-1), y]) === '[') {
-            colsToMinRow[colsToSearch.at(-1) + 1] ??= y;
-            colsToMaxRow[colsToSearch.at(-1) + 1] = y;
+            colsToFirstRow[colsToSearch.at(-1) + 1] ??= y;
             colsToSearch.push(colsToSearch.at(-1) + 1);
         }
-        for (let i = colsToSearch[0]; i < colsToSearch.at(-1); i++) {
-            colsToMaxRow[i] = y;
+
+        // For all columns that we are still analyzing, update the colsToLastRow value.
+        for (let i = colsToSearch[0]; i <= colsToSearch.at(-1); i++) {
+            colsToLastRow[i] = y;
         }
 
         [x, y] = matrix.directionFrom([x, y], direction);
     }
 
-    return [colsToMinRow, colsToMaxRow];
+    return [colsToFirstRow, colsToLastRow];
 };
 
 const calculateGps = (matrix) => {
@@ -91,8 +104,8 @@ const getResult = async () => {
         if ([Matrix.LEFT, Matrix.RIGHT].includes(command)) {
             matrix.pushLocation(command);
         } else {
-            const [colMinRowsToMove, colMaxRowsToMove] = determineCols(matrix, matrix.getLocation(), command);
-            matrix.pushLocationCols(command, colMinRowsToMove, colMaxRowsToMove);
+            const [colFirstRowsToMove, colLastRowsToMove] = determineCols(matrix, command);
+            matrix.pushLocationCols(command, colFirstRowsToMove, colLastRowsToMove);
         }
     });
     return calculateGps(matrix);

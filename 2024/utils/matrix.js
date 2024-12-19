@@ -1,4 +1,13 @@
-const { add, downFrom, isValidCoordinate, leftFrom, rightFrom, upFrom } = require('../utils/coordinates');
+const {
+    add,
+    Direction,
+    directionFrom,
+    downFrom,
+    isValidCoordinate,
+    leftFrom,
+    rightFrom,
+    upFrom,
+} = require('../utils/coordinates');
 
 const Region = require('./region');
 
@@ -19,19 +28,19 @@ class Matrix {
     }
 
     static get UP() {
-        return '^';
+        return Direction.UP;
     }
 
     static get DOWN() {
-        return 'v';
+        return Direction.DOWN;
     }
 
     static get LEFT() {
-        return '<';
+        return Direction.LEFT;
     }
 
     static get RIGHT() {
-        return '>';
+        return Direction.RIGHT;
     }
 
     get width() {
@@ -127,18 +136,7 @@ class Matrix {
     }
 
     directionFrom(coords, direction) {
-        switch (direction) {
-            case Matrix.UP:
-                return this.upFrom(coords);
-            case Matrix.DOWN:
-                return this.downFrom(coords);
-            case Matrix.LEFT:
-                return this.leftFrom(coords);
-            case Matrix.RIGHT:
-                return this.rightFrom(coords);
-            default:
-                return undefined;
-        }
+        return directionFrom(coords, direction);
     }
 
     find(value) {
@@ -265,56 +263,51 @@ class Matrix {
         }
     }
 
-    pushLocationCols(direction, colMinRowsToMove, colMaxRowsToMove) {
-        const coordsToPush = Object.keys(colMinRowsToMove).map((col) => {
-            let newY = colMinRowsToMove[col];
-            const xNum = parseInt(col, 10);
-
-            while (this.at([xNum, newY]) === '.') {
-                [, newY] = this.directionFrom([xNum, newY], direction);
-            }
-            return [xNum, newY];
-        });
-        const canPushCols = coordsToPush.map((coord) =>
-            this.checkPush(coord, direction, colMaxRowsToMove[coord[0]]),
+    pushLocationCols(direction, colFirstRowsToMove, colLastRowsToMove) {
+        const coordsToPush = Object.entries(colFirstRowsToMove).map(([col, minY]) => [
+            parseInt(col, 10),
+            minY,
+        ]);
+        const canPushCols = coordsToPush.map(([x, y]) =>
+            this.checkPush([x, y], direction, colLastRowsToMove[x]),
         );
 
         if (canPushCols.every((canPush) => canPush)) {
-            coordsToPush.forEach((coord) => {
-                this.doPush(coord, direction, colMaxRowsToMove[coord[0]]);
+            coordsToPush.forEach(([x, y]) => {
+                this.doPush([x, y], direction, colLastRowsToMove[x]);
             });
             this.moveLocation(direction);
         }
     }
 
-    atTarget(currentY, maxY, direction) {
+    atTarget(currentY, lastY, direction) {
         if (direction === Matrix.UP) {
-            return currentY <= maxY;
+            return currentY <= lastY;
         } else {
-            return currentY >= maxY;
+            return currentY >= lastY;
         }
     }
 
-    checkPush(coords, direction, maxY = null) {
+    checkPush(coords, direction, lastY = null) {
         if (coords) {
-            maxY ??= coords[1];
-            if (this.isFreeSpace(coords) && this.atTarget(coords[1], maxY, direction)) {
+            lastY ??= coords[1];
+            if (this.isFreeSpace(coords) && this.atTarget(coords[1], lastY, direction)) {
                 return true;
             } else if (!this.isFixedSpace(coords) && this.isMovableSpace(coords)) {
-                return this.checkPush(this.directionFrom(coords, direction), direction, maxY);
+                return this.checkPush(this.directionFrom(coords, direction), direction, lastY);
             }
         }
 
         return false;
     }
 
-    doPush(coords, direction, maxY = null) {
+    doPush(coords, direction, lastY = null) {
         if (coords && !this.isFixedSpace(coords)) {
-            maxY ??= coords[1];
-            if (this.isFreeSpace(coords) && this.atTarget(coords[1], maxY, direction)) {
+            lastY ??= coords[1];
+            if (this.isFreeSpace(coords) && this.atTarget(coords[1], lastY, direction)) {
                 return coords;
             } else if (this.isMovableSpace(coords)) {
-                const pushCoords = this.doPush(this.directionFrom(coords, direction), direction, maxY);
+                const pushCoords = this.doPush(this.directionFrom(coords, direction), direction, lastY);
 
                 if (pushCoords) {
                     this.swap(coords, pushCoords);

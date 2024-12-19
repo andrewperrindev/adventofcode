@@ -3,7 +3,7 @@ const { disableLogging } = require('../../test-helper.js');
 const robotsP1 = require('../robots.p1.js');
 const robotsP2 = require('../robots.p2.js');
 
-describe('2024 Day 13', () => {
+describe('2024 Day 14', () => {
     beforeAll(disableLogging);
 
     describe('Part 1', () => {

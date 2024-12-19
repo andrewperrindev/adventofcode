@@ -25,3 +25,5 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 13 (_Claw Contraption_): Calculate the minimum number of button presses needed to win a prize from a machine.
 - Day 14 (_Restroom Redoubt_): Part 1 calculates the position of guard robots after 100 seconds. Part 2 looks for the number of seconds until the robots (curiously) form the shape of a Christmas tree.
 - Day 15 (_Warehouse Woes_): Both parts predict where a robot will move boxes to on a grid. Second part complicates things by making the boxes double width. <sup>NB - cleanup</sup>
+- Day 16 (_Reindeer Maze_): First part asks to find the shortest distance from the start of a maze to the end. Second part asks for the number of coordinates on the grid that are part of at least one of the possible best paths.
+- Day 17 (_Chronospatial Computer_): Part 1 executes a set of program instructions and returns the output. Part 2 is the reverse: given an output, what input would yield that result. <sup>NB - needs part 2 solution</sup>

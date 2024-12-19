@@ -3,7 +3,7 @@ const { disableLogging } = require('../../test-helper.js');
 const lanternfishP1 = require('../lanternfish.p1.js');
 const lanternfishP2 = require('../lanternfish.p2.js');
 
-describe('2024 Day 13', () => {
+describe('2024 Day 15', () => {
     beforeAll(disableLogging);
 
     describe('Part 1', () => {

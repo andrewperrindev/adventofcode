@@ -28,3 +28,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 16 (_Reindeer Maze_): First part asks to find the shortest distance from the start of a maze to the end. Second part asks for the number of coordinates on the grid that are part of at least one of the possible best paths.
 - Day 17 (_Chronospatial Computer_): Part 1 executes a set of program instructions and returns the output. Part 2 is the reverse: given an output, what input would yield that result. <sup>NB - needs part 2 solution</sup>
 - Day 18 (_RAM Run_): First part finds the minimum number of steps needed to escape a grid after a certain number of obstacles appear. Second part figures out the first obstacle that makes escape impossible.
+- Day 19 (_Linen Layout_): Part 1: find how many desired towel designs are possible given the available patterns. Part 2: calculate all the possible ways a design could be made with the available patterns.

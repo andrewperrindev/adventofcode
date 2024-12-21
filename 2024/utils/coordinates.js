@@ -10,6 +10,10 @@ const stringToCoordinates = (string) => {
 };
 
 const isValidCoordinate = (coords, gridDimensions, xMin = 0, yMin = 0) => {
+    if (!Array.isArray(coords) || !Array.isArray(gridDimensions)) {
+        return false;
+    }
+
     const [x, y] = coords;
     const [length, height] = gridDimensions;
     const xMax = xMin + length;
@@ -20,6 +24,12 @@ const isValidCoordinate = (coords, gridDimensions, xMin = 0, yMin = 0) => {
 
 const areEqual = ([x1, y1], [x2, y2]) => {
     return x1 === x2 && y1 === y2;
+};
+
+const manhattanDistance = (coords1, coords2) => {
+    const a = Math.abs(coords1[0] - coords2[0]);
+    const b = Math.abs(coords1[1] - coords2[1]);
+    return a + b;
 };
 
 const upFrom = ([x, y]) => {
@@ -81,6 +91,7 @@ module.exports = {
     stringToCoordinates,
     isValidCoordinate,
     areEqual,
+    manhattanDistance,
     upFrom,
     downFrom,
     leftFrom,

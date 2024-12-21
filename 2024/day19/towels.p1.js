@@ -1,7 +1,6 @@
-const { readInputVal, openFile, readAsLines } = require('../utils/file-handler');
+const { openFile, readAsLines } = require('../utils/file-handler');
 
 const readInput = async (type) => {
-    readInputVal();
     const data = await openFile(`inputs/towels.${type}.txt`, __dirname);
 
     return readAsLines(data);

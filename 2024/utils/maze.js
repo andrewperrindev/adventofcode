@@ -18,6 +18,11 @@ module.exports = class Maze extends Matrix {
         return this.isValidCoordinate(coords) && !this.fixedSpaceChars.includes(this.at(coords));
     }
 
+    setStartAndGoal(start = 'S', goal = 'E') {
+        this.start = this.find(start);
+        this.goal = this.find(goal);
+    }
+
     getOptimalPath(direction, keyFn = defaultKeyFn, scoreFn = defaultScoreFn) {
         return dijkstra(this.start, direction, this.goal, this.isValidSpace.bind(this), keyFn, scoreFn);
     }

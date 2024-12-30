@@ -32,6 +32,22 @@ const manhattanDistance = (coords1, coords2) => {
     return a + b;
 };
 
+const getMovementDirection = ([fromX, fromY], [toX, toY]) => {
+    if (fromX === toX) {
+        if (toY > fromY) {
+            return Direction.DOWN;
+        } else if (toY < fromY) {
+            return Direction.UP;
+        }
+    } else if (fromY === toY) {
+        if (toX > fromX) {
+            return Direction.RIGHT;
+        } else if (toX < fromX) {
+            return Direction.LEFT;
+        }
+    }
+};
+
 const upFrom = ([x, y]) => {
     return [x, y - 1];
 };
@@ -92,6 +108,7 @@ module.exports = {
     isValidCoordinate,
     areEqual,
     manhattanDistance,
+    getMovementDirection,
     upFrom,
     downFrom,
     leftFrom,

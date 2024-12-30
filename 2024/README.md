@@ -30,3 +30,6 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 18 (_RAM Run_): First part finds the minimum number of steps needed to escape a grid after a certain number of obstacles appear. Second part figures out the first obstacle that makes escape impossible.
 - Day 19 (_Linen Layout_): Part 1: find how many desired towel designs are possible given the available patterns. Part 2: calculate all the possible ways a design could be made with the available patterns.
 - Day 20 (_Race Condition_): Both parts find ways to cheat in a race through a maze. Part 2 simply extends how far you can cheat.
+- Day 21
+- Day 22 (_Monkey Market_): First part calculates the sum of secret numbers of buyers in a stock market like scenario.
+- Day 23 (_LAN Party_): First part looks for sets of three connected computers, where at least one computer in the set starts with 't'. Part 2 finds the longest set of connected computer names.

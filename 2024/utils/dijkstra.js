@@ -56,7 +56,8 @@ const dijkstra = (start, direction, goal, isValidFn, keyFn, distanceFn, targetDi
             const newKey = keyFn(newNode, newDirection);
 
             if (isValidFn(newNode) && !visited.has(newKey)) {
-                const newTotalDistance = currDistance + distanceFn(currDirection, closestNode, newNode);
+                const newTotalDistance =
+                    currDistance + distanceFn(currDirection, closestNode, newNode, currPath);
                 const newNodeDistance = distances[newKey] ?? Infinity;
                 if (newTotalDistance < newNodeDistance) {
                     nodes.push([newNode, newDirection, newTotalDistance, [...currPath, newNode]]);

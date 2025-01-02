@@ -31,7 +31,7 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 19 (_Linen Layout_): Part 1: find how many desired towel designs are possible given the available patterns. Part 2: calculate all the possible ways a design could be made with the available patterns.
 - Day 20 (_Race Condition_): Both parts find ways to cheat in a race through a maze. Part 2 simply extends how far you can cheat.
 - Day 21 (_Keypad Conundrum_): Both parts involve instructing robots to use a series of directional pads to type out a code. First part only has two robots using directional pads; second part has 25.
-- Day 22 (_Monkey Market_): First part calculates the sum of secret numbers of buyers in a stock market like scenario.
+- Day 22 (_Monkey Market_): First part calculates the sum of secret numbers of buyers in a stock market like scenario. <sup>NB - needs part 2 solution</sup>
 - Day 23 (_LAN Party_): First part looks for sets of three connected computers, where at least one computer in the set starts with 't'. Part 2 finds the longest set of connected computer names.
 - Day 24 (_Crossed Wires_): First part reads a set of logic gate instructions to calculate an output. Second part finds which instructions are incorrect.
-- Day 25 (_Code Chronicle_): Given a set of 'keys' and 'locks', find how many combinations are valid.
+- Day 25 (_Code Chronicle_): Given a set of 'keys' and 'locks', find how many combinations are valid. <sup>NB - needs part 2 solution</sup>

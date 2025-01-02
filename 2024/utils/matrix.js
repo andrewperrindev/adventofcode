@@ -55,6 +55,20 @@ class Matrix {
         return this.charList;
     }
 
+    getColCharacterCount(char, x) {
+        let tally = 0;
+
+        if (char && x >= 0 && x < this.width) {
+            for (let y = 0; y < this.height; y++) {
+                if (this.at([x, y]) === char) {
+                    tally++;
+                }
+            }
+        }
+
+        return tally;
+    }
+
     isValidCoordinate(coords) {
         return isValidCoordinate(coords, [this.width, this.height]);
     }

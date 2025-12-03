@@ -17,14 +17,12 @@ const readInput = async () => {
 
 const countZeroResults = (start, instructions) => {
     let arrayLength = 100;
-    let lock = Array.from({ length: arrayLength }, (value, index) => index);
     let position = start;
     let zeroCount = 0;
 
     instructions.forEach(([ direction, number ]) => {
         let offset = position + (direction === 'L' ? -number : number);
-        let newIndex = (offset % arrayLength + arrayLength) % arrayLength
-        position = lock[newIndex];
+        position = (offset % arrayLength + arrayLength) % arrayLength
 
         if (position === 0) {
             zeroCount++;

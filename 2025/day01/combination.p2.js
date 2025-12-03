@@ -17,13 +17,12 @@ const readInput = async () => {
 
 const countZeroTraversals = (start, instructions) => {
     let arrayLength = 100;
-    let lock = Array.from({ length: arrayLength }, (value, index) => index);
-    var position = start;
+    let position = start;
     let zeroCount = 0;
 
     instructions.forEach(([ direction, number ]) => {
         let distanceToZero = (direction === 'L' ? position : arrayLength - position);
-        var adjustedNumber = number;
+        let adjustedNumber = number;
 
         // If this move crosses zero, count that first
         if (position > 0 && adjustedNumber >= distanceToZero) {
@@ -39,8 +38,7 @@ const countZeroTraversals = (start, instructions) => {
             zeroCount += Math.floor(Math.abs(offset) / arrayLength);
         }
 
-        let newIndex = (offset % arrayLength + arrayLength) % arrayLength
-        position = lock[newIndex];
+        position = (offset % arrayLength + arrayLength) % arrayLength
     });
 
     return zeroCount;

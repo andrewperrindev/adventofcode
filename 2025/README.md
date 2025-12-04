@@ -11,3 +11,5 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 ## Summary
 
 - Day 1 (_Secret Entrance_): Given a list of instructions for turning a dial on a rotary lock, find how many times the lock stops at position 0. Part 2 counts how many times the lock stops or passes position 0 while executing the instructions.
+- Day 2 (_Gift Shop_): Find product IDs in a range of IDs that are invalid. An ID is invalid if the numbers repeat halfway through (e.g. 123123). Part 2 makes an ID invalid if there are repeating numbers of any size group (e.g. 121212).
+- Day 3 (_Lobby_): Find two consective batteries in a bank of batteries that yield the most power. Part 2 expands the number of batteries from two to twelve.

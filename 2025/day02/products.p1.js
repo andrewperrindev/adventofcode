@@ -87,4 +87,3 @@ getResult().then((result) => {
 module.exports = {
     getResult,
 };
-

@@ -86,9 +86,18 @@ class Matrix {
     }
 
     plot() {
+        const locationChar = this.atLocation();
+        if (locationChar) {
+            this.setLocationValue('O');
+        }
+
         this.matrix.forEach((line) => {
             console.log(line.join(''));
         });
+
+        if (locationChar) {
+            this.setLocationValue(locationChar);
+        }
     }
 
     at(coords) {

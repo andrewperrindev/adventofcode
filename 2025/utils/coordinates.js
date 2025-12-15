@@ -6,6 +6,11 @@ const Direction = {
 };
 
 const stringToCoordinates = (string) => {
+    if (!string) {
+        return null;
+    } else if (Array.isArray(string)) {
+        return string;
+    }
     return string.split(',').map((num) => parseInt(num, 10));
 };
 

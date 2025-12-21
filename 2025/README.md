@@ -20,3 +20,4 @@ Each day in the Advent of Code provided a new backstory to that day's coding cha
 - Day 8 (_Playground_): Connect points together with the shortest distance between them. Repeat 1000 times. Part 2 repeats until all points are connected.
 - Day 9 (_Movie Theater_): Find largest square formed if two of the given coordinates are opposite corners of the square. Part 2 restricts to squares that are contained only in the polygon formed by the list of points (not yet implemented).
 - Day 10 (_Factory_): Determine the fewest button presses to light up a specific sequence of lights. Part 2 is similar, but requires hitting a series of specific 'joltage' numbers instead (not yet implemented).
+- Day 11 (_Reactor_): Find the number of paths from device A to device B. Part 2 adds a constraint of the path needing to pass through two specific devices along the way in order to be valid.

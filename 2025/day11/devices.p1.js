@@ -1,7 +1,7 @@
 const { openFile, readAsLines } = require('../utils/file-handler');
 
 const readInput = async () => {
-    const data = await openFile('inputs/devices.input.txt', __dirname);
+    const data = await openFile('inputs/devices.p1.example.txt', __dirname);
 
     return readAsLines(data);
 };

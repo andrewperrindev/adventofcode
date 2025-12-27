@@ -90,7 +90,7 @@ const getResult = async () => {
     const points = createPoints(data);
     const distances = calculateDistancesForAllPairs(points);
     const sortedDistances = distances.sort((a, b) => a[2] - b[2]);
-    createCircuits(sortedDistances, 1000);
+    createCircuits(sortedDistances, 10);
 
     // Compute component sizes by root
     const sizeByRoot = new Map();
